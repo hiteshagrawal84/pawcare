@@ -1,0 +1,10 @@
+{
+  "description": "Offers comprehensive pet care services including veterinary, grooming, training, and adoption with easy appointment booking and online shopping for pet products.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
