@@ -1,6 +1,6 @@
 'use client';
 
-import { AdminSettingsPage } from '../adoption/page';
+import { AdminSettingsPage } from '@/components/admin/extra-pages';
 
 export default function Page() {
   return <AdminSettingsPage />;

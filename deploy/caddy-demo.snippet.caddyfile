@@ -1,0 +1,19 @@
+# Snippet for /root/createswowtech/deploy/Caddyfile under demo.createswowtech.com
+# PawCare demo at https://demo.createswowtech.com/petcare
+#
+# API: strip /petcare so Express sees /api and /uploads
+# Frontend: keep /petcare prefix (Next.js basePath=/petcare)
+
+  handle /petcare/api* {
+    uri strip_prefix /petcare
+    reverse_proxy petcare-backend:5000
+  }
+
+  handle /petcare/uploads* {
+    uri strip_prefix /petcare
+    reverse_proxy petcare-backend:5000
+  }
+
+  handle /petcare* {
+    reverse_proxy petcare-frontend:3000
+  }

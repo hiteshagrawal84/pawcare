@@ -1,6 +1,6 @@
 'use client';
 
-import { AdminMediaPage } from '../adoption/page';
+import { AdminMediaPage } from '@/components/admin/extra-pages';
 
 export default function Page() {
   return <AdminMediaPage />;

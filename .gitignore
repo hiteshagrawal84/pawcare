@@ -5,6 +5,7 @@ build/
 .env
 .env.local
 .env.*.local
+.env.hostinger
 uploads/
 *.log
 .DS_Store
@@ -13,3 +14,4 @@ coverage/
 *.zip
 marketing/
 tsbuildinfo
+*.tsbuildinfo

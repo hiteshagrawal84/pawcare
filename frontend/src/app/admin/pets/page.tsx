@@ -1,6 +1,6 @@
 'use client';
 
-import { AdminPetsPage } from '../adoption/page';
+import { AdminPetsPage } from '@/components/admin/extra-pages';
 
 export default function Page() {
   return <AdminPetsPage />;

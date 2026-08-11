@@ -1,6 +1,6 @@
 'use client';
 
-import { AdminCrudPage, StatusBadge } from '@/components/admin/crud-page';
+import { AdminCrudPage } from '@/components/admin/crud-page';
 import { adminApi } from '@/services';
 import { formatCurrency } from '@/lib/utils';
 
@@ -50,53 +50,6 @@ export default function AdminDoctorsPage() {
       remove={async (id) => {
         await adminApi.deleteDoctor(id);
       }}
-    />
-  );
-}
-
-export function AdminServicesPageInner() {
-  return (
-    <AdminCrudPage
-      title="Services"
-      description="Manage clinic services and pricing"
-      columns={[
-        { key: 'name', label: 'Service', render: (r) => `${r.icon || ''} ${r.name}` },
-        { key: 'price', label: 'Price', render: (r) => formatCurrency(Number(r.price)) },
-        { key: 'duration', label: 'Duration', render: (r) => `${r.duration} min` },
-        { key: 'status', label: 'Status', render: (r) => <StatusBadge status={String(r.status)} /> },
-      ]}
-      fields={[
-        { name: 'name', label: 'Name', required: true },
-        { name: 'description', label: 'Description', type: 'textarea', required: true },
-        { name: 'icon', label: 'Icon (emoji)' },
-        { name: 'color', label: 'Background Color' },
-        { name: 'price', label: 'Price', type: 'number', required: true },
-        { name: 'duration', label: 'Duration (min)', type: 'number' },
-        { name: 'image', label: 'Image URL' },
-        {
-          name: 'status',
-          label: 'Status',
-          type: 'select',
-          options: [
-            { value: 'active', label: 'Active' },
-            { value: 'inactive', label: 'Inactive' },
-          ],
-        },
-      ]}
-      load={async (search) => {
-        const r = await adminApi.getServices(`limit=50&all=true&search=${encodeURIComponent(search)}`);
-        return r.data as unknown as Record<string, unknown>[];
-      }}
-      create={async (data) => {
-        await adminApi.createService(data);
-      }}
-      update={async (id, data) => {
-        await adminApi.updateService(id, data);
-      }}
-      remove={async (id) => {
-        await adminApi.deleteService(id);
-      }}
-      getInitial={(row) => (row ? { ...row } : { status: 'active', icon: '🐾', color: '#e8f5e9' })}
     />
   );
 }
